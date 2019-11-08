@@ -1,4 +1,4 @@
-# Learn-fp-ts
+# Learn fp-ts
 
 Examples, explanations and resources for fp-ts
 
