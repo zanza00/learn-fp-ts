@@ -1,12 +1,14 @@
 # Learn fp-ts
 
-Examples, explanations and resources for fp-ts
+Learning a new library is hard. Learning a new paradigm while learning a new library is harder.
 
-Work in progress
+So I started to collect a lot of examples, explanations and resources for fp-ts
 
-## Introduction
+**This site is a big work in progress,**
 
-[fp-ts](https://github.com/gcanti/fp-ts) is a library that enables to use functional programming in typescript.
+if you find any problem don't hesitate to[ open a issue](https://github.com/zanza00/learn-fp-ts/issues/new)
 
-the library is very powerful but it has a steep learning curve, hence this site.
+if you find some errors you can [shoot a pr](https://github.com/zanza00/learn-fp-ts)
+
+
 
