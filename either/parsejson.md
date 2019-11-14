@@ -1,7 +1,7 @@
 # ParseJson
 
 {% hint style="info" %}
-You can find the code for this example [here](https://codesandbox.io/s/heuristic-dijkstra-gpdyg) in the example.ts file
+You can find the code for this example [here](https://codesandbox.io/s/either-parsejson-gpdyg?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fexample.ts) in the example.ts file
 {% endhint %}
 
 I need to parse some JSON, since it's an operation that can fail we use Either&lt;E,A&gt;
