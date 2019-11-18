@@ -27,7 +27,7 @@ To achieve this effect some rules has to be enforced.
 
 ### Functions need to be pure
 
-What is mean to be _pure_? A function is pure when it **doesn't** **have side effects**, **takes in** **input all parameters** that are needed and **return a value**. Let's analize what this means.
+What is mean to be _pure_? A function is pure when it **doesn't** **have side effects,** **takes in** **input all parameters** that are needed and **returns a value**. Let's analize what this means.
 
 #### Doesn't have side effects
 
@@ -121,9 +121,55 @@ try {
 
 #### All parameters are in input
 
-#### returns a value
+This is in a similar vein as before, a function need to be able to work without external values. For example lets assume that we have a global variable and a function that depends on said global variable
+
+```typescript
+const universe = {
+    name: 'functional programming'
+}
+
+function getFirstLetter(): string {
+    return universe.name.substring(0, 1)
+}
+
+console.log(getFirstLetter()) // 'f'
+```
+
+Now if we move the function in a new file it doesn't work anymore
+
+{% tabs %}
+{% tab title="function" %}
+```typescript
+function getFirstLetter(): string {
+    return universe.name.substring(0, 1)
+}
+
+console.log(getFirstLetter()) // cannot compile
+```
+{% endtab %}
+
+{% tab title="universe" %}
+```
+const universe = {
+    name: 'functional programming'
+}
+```
+{% endtab %}
+{% endtabs %}
+
+to make this function pure we need to make the dependency explicit
+
+```typescript
+function getFirstLetter(str: string): string {
+    return universe.name.substring(0, 1)
+}
+
+console.log(getFirstLetter('functional programming')); // 'f'
+```
+
+#### Returns a value
 
 ## Composition
 
-
+Composition is a pattern, you can `pipe` the various functions to get your result 
 

@@ -6,4 +6,6 @@
 * [Option](option.md)
 * [Either](either/README.md)
   * [ParseJson](either/parsejson.md)
+* [TaskEither](taskeither/README.md)
+  * [TaskEither and io-ts](taskeither/taskeither-and-io-ts.md)
 
