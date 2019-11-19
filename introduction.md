@@ -5,10 +5,10 @@
 There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolve around it. Once you can use _fp-ts_ you can use those as well.
 
 {% hint style="info" %}
-Once you are familiar with Either I reccomend to look io-ts that bridges the gap between compile and runtime
+Once you are familiar with Either I raccomend to look io-ts that bridges the gap between compile and runtime
 {% endhint %}
 
-fp-ts implement notions and concepts from funcional programming. The two pillars that essential to understand how to use are as follows:
+fp-ts implement notions and concepts from functional programming. The two pillars that essential to understand how to use are as follows:
 
 * **Referential transparency**
 * **Composition**\(as a design pattern\)
@@ -17,7 +17,7 @@ Let's talk more in depth on what those two pillars are
 
 ## Referential Transparency
 
-This is a very simple but very powerful concept. It states as follows: _Everything is an Expression._ When something is an Expression you can safely replace it with it's corresponding value without changing the _Program_'s behaviour.
+This is a very simple but very powerful concept. It states as follows: _Everything is an Expression._ When something is an Expression you can safely replace it with it's corresponding value without changing the _Program_'s behavior.
 
 {% hint style="info" %}
 This concept is very powerful when refactoring.
@@ -103,7 +103,7 @@ try {
 }
 ```
 
-Now the program behaviour changes when we replace the function with its result
+Now the program behavior changes when we replace the function with its result
 
 ```typescript
 function divide(a: number, b: number): number {
@@ -167,7 +167,13 @@ function getFirstLetter(str: string): string {
 console.log(getFirstLetter('functional programming')); // 'f'
 ```
 
+This aids readability and testability of the function
+
 #### Returns a value
+
+This particular point is not so obvious, usually if something has a `void` return it usially mean that some side effect is performed. It's in the same vein as before, portability and testability.
+
+To perform side effect take a look at IO
 
 ## Composition
 

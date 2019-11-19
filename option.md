@@ -17,17 +17,68 @@ const firstElement = arr[0] // undefined
 before manipulating `firstElement` checking for `undefined` is needed
 
 ```typescript
-let firstElementPlusHundred;
+let firstElementTimesTwo;
 if (firstElement !== undefined) {
-    firstElementPlusHundred = firstElement + 100
+    firstElementTimesTwo = firstElement * 2
 }
 ```
 
 luckily we can use one of the function form `Array` to do the same thing
 
 ```typescript
-import * as O from 'fp-ts/lib/Array'
+import * as O from "fp-ts/lib/Option";
+import * as A from "fp-ts/lib/Array";
 
-const safeFirstElement: O.Option<number> = O.head(arr)
+const safeFirstElement: O.Option<number> = A.head(arr)
+```
+
+## Map
+
+now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the TypeClass named `map` 
+
+```typescript
+import { pipe } from "fp-ts/lib/pipeable";
+import * as O from "fp-ts/lib/Option";
+import * as A from "fp-ts/lib/Array";
+
+const arr: number[] = []
+const safeFirstElement: O.Option<number> = A.head(arr)
+
+const firstElementTimesTwo = pipe(
+  safeFirstElement,
+  O.map(value => value * 2)
+)
+```
+
+For now the difference is not that great, the biggest one is the use of `const` instead of `let` .
+
+## Chain
+
+Moving on let's say that we need to divide this resulting number by 0. Because is an operation with a special case we use another Type Class called `chain` that enables us to change the "branch" of the `Option` 
+
+```typescript
+const firstElementTimesTwo = pipe(
+  safeFirstElement,
+  O.map(value => value * 2),
+  O.chain(n === 0 ? O.none : O.some(1 / n))
+)
+```
+
+## Final Example
+
+```typescript
+import { pipe } from "fp-ts/lib/pipeable";
+import * as O from "fp-ts/lib/Option";
+import * as A from "fp-ts/lib/Array";
+
+const result = pipe(
+  A.head([1]),
+  O.map(n => n * 2),
+  O.chain(n === 0 ? O.none : O.some(1 / n)),
+  O.filter(n => n > 1),
+  O.fold(() => 'ko', () => 'ok')
+)
+
+console.log(result)
 ```
 
