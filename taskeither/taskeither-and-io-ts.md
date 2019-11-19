@@ -1,6 +1,6 @@
 # TaskEither and io-ts
 
-In this page we will learn how to fetch data from an endpoint and validate \(check\) that the data returned is what we expect. To do this we will use the io-ts library that uses an `Either` for representing the 
+In this page we will learn how to fetch data from an endpoint and validate \(check\) that the data returned is what we expect. To do this we will use the io-ts library that uses an `Either` for representing the or the correct value or the errors in the validation 
 
 {% hint style="info" %}
 You can find a more complete implementation [here ](https://codesandbox.io/s/taskeither-io-ts-8rltm?module=%2Fsrc%2Fexample.ts)in the file example.ts
@@ -27,7 +27,7 @@ function getStuff(u: string): TE.TaskEither<Error, unknown> {
 }
 ```
 
-First of all since a `Promise` is not referentially transparent we use `tryCatch` to make it, if you already have an utility you can use it instead.
+First of all since a `Promise` is not referentially transparent we use `tryCatch` to make it, if you already have a fetch wrappen in an utility you can use that instead.
 
 Now lets implement a [io-ts](https://github.com/gcanti/io-ts) codec for a [Studio Ghibli Film ](https://ghibliapi.herokuapp.com/#tag/Films)
 
