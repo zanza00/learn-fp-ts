@@ -50,7 +50,7 @@ const firstElementTimesTwo = pipe(
 )
 ```
 
-For now the difference is not that great, the biggest one is the use of `const` instead of `let` .
+For now the difference is not that great, the biggest one is the use of `const` instead of `let`.
 
 ## Chain
 

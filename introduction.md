@@ -5,10 +5,10 @@
 There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolve around it. Once you can use _fp-ts_ you can use those as well.
 
 {% hint style="info" %}
-Once you are familiar with Either I recommend to look io-ts that bridges the gap between compile and runtime
+Once you are familiar with [Either ](either/)I recommend to look[ io-ts ](https://github.com/gcanti/io-ts)that bridges the gap between compile and runtime
 {% endhint %}
 
-fp-ts implement notions and concepts from functional programming. The two pillars that essential to understand how to use are as follows:
+_fp-ts_ implement notions and concepts from functional programming. The two pillars that essential to understand how to use are as follows:
 
 * **Referential transparency**
 * **Composition**\(as a design pattern\)
@@ -17,7 +17,7 @@ Let's talk more in depth on what those two pillars are
 
 ## Referential Transparency
 
-This is a very simple but very powerful concept. It states as follows: _Everything is an Expression._ When something is an Expression you can safely replace it with it's corresponding value without changing the _Program_'s behavior.
+This is a very simple but very powerful concept. It states as follows: _Everything is an Expression._ When something is an Expression you can safely replace it with its corresponding value without changing the _Program_'s behavior.
 
 {% hint style="info" %}
 This concept is very powerful when refactoring.
@@ -27,7 +27,7 @@ To achieve this effect some rules has to be enforced.
 
 ### Functions need to be pure
 
-What is mean to be _pure_? A function is pure when it **doesn't** **have side effects,** **takes in** **input all parameters** that are needed and **returns a value**. Let's analize what this means.
+What is mean to be _pure_? A function is pure when it **doesn't** **have side effects,** **takes in** **input all parameters** that are needed and **returns a value**. Let's analyze what this means.
 
 #### Doesn't have side effects
 
@@ -35,7 +35,7 @@ A _side effect_ is a change outside the function, the most common way is to upda
 
 Think whether replace that function with it's value will update the external variable or throw the exception
 
-Let's analize the case of the external variable
+Let's analyze the case of the external variable
 
 ```typescript
 let externalVariable = 0

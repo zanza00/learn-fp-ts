@@ -27,7 +27,7 @@ function getStuff(u: string): TE.TaskEither<Error, unknown> {
 }
 ```
 
-First of all since a `Promise` is not referentially transparent we use `tryCatch` to make it, if you already have a fetch wrappen in an utility you can use that instead.
+First of all since a `Promise` is not referentially transparent we use `tryCatch` to make it, if you already have a fetch wrapped in an utility you can use that instead.
 
 Now lets implement a [io-ts](https://github.com/gcanti/io-ts) codec for a [Studio Ghibli Film ](https://ghibliapi.herokuapp.com/#tag/Films)
 

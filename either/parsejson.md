@@ -4,7 +4,7 @@
 You can find the code for this example [here](https://codesandbox.io/s/either-parsejson-gpdyg?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fexample.ts) in the example.ts file
 {% endhint %}
 
-I need to parse some JSON, since it's an operation that can fail we use Either&lt;E,A&gt;
+I need to parse some JSON, since it's an operation that can fail we use `Either<E,A>`
 
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
@@ -20,7 +20,7 @@ pipe(
 // {"firstJson":true}
 ```
 
-What if I have two JSONto parse?
+What if I have _two_ JSON to parse?
 
 Here we can use Chain and Map in a naive way
 
@@ -48,7 +48,7 @@ pipe(
 // [{"firstJson":true},{"thisIsTheSecondJson":"Yes it is"}]
 ```
 
-As you can see this does not scale very well so we can use SequenceT to have an array of Either and parse all the two JSON
+As you can see this does not scale very well so we can use `SequenceT` to have the `Either`as arguments and parse the two JSON
 
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
