@@ -71,14 +71,37 @@ import { pipe } from "fp-ts/lib/pipeable";
 import * as O from "fp-ts/lib/Option";
 import * as A from "fp-ts/lib/Array";
 
-const result = pipe(
-  A.head([1]),
-  O.map(n => n * 2),
-  O.chain(n === 0 ? O.none : O.some(1 / n)),
-  O.filter(n => n > 1),
-  O.fold(() => 'ko', () => 'ok')
-)
+function ComputeWithFpts(array: number[]): string  {
+  return pipe(
+    A.head(array),
+    O.map(n => n * 2),
+    O.chain(n === 0 ? O.none : O.some(1 / n)),
+    O.filter(n => n > 1),
+    O.fold(() => 'ko', () => `the result is: ${result}`)
+  )
+}
 
-console.log(result)
+console.log(ComputeWithFpts([1]))
 ```
+
+for comparison here is the same example without using fp-ts
+
+```typescript
+function ComputeTheOldWay(array: number[]): string {
+  const firstElement = array[0];
+  if (firstElement === undefined) return "ko";
+  const firstElementTimesTwo = firstElement * 2;
+  if (firstElementTimesTwo === 0) return "ko";
+  const division = 1 / firstElementTimesTwo;
+  if (division <= 1) return "ko";
+  const result = division;
+  return renderSuccess(name, `the result is: ${result}`);
+}
+
+console.log(ComputeTheOldWay([1])
+```
+
+
+
+
 
