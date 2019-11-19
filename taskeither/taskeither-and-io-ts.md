@@ -17,7 +17,7 @@ function getStuff(u: string): TE.TaskEither<Error, unknown> {
   return TE.tryCatch(
     () =>
       fetch(u).then(res => {
-        if (res.status !== 200) {
+        if (!res.ok) {
           throw new Error(`fetch failed with status: ${res.status}`);
         }
         return res.json();

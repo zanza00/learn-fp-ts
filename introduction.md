@@ -5,7 +5,7 @@
 There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolve around it. Once you can use _fp-ts_ you can use those as well.
 
 {% hint style="info" %}
-Once you are familiar with Either I raccomend to look io-ts that bridges the gap between compile and runtime
+Once you are familiar with Either I recommend to look io-ts that bridges the gap between compile and runtime
 {% endhint %}
 
 fp-ts implement notions and concepts from functional programming. The two pillars that essential to understand how to use are as follows:
@@ -171,11 +171,34 @@ This aids readability and testability of the function
 
 #### Returns a value
 
-This particular point is not so obvious, usually if something has a `void` return it usially mean that some side effect is performed. It's in the same vein as before, portability and testability.
+This particular point is not so obvious, usually if something has a `void` return it usually mean that some side effect is performed. It's in the same vein as before, portability and testability.
 
 To perform side effect take a look at IO
 
 ## Composition
 
-Composition is a pattern, you can `pipe` the various functions to get your result 
+Composition is a pattern that enables the construction of bigger and complex entities by combine small and easy to understand unit that do something very specific.
+
+### Combinators
+
+This is taken [straight from Haskell](https://wiki.haskell.org/Combinator)
+
+> A style of organizing libraries centered around the idea of combining things. Usually there is some type `T`, some "primitive" values of type `T`, and some "combinators" which can combine values of type `T` in various ways to build up more complex values of type `T`
+
+The general form of a combinator is:
+
+```text
+combinator: Thing => Thing
+```
+
+The purpose of a combinator is to create new "things" from "things" that are already defined
+
+The result can be passed as an input we get an explosion of combinatorial possibilities, this is the power of this pattern.
+
+If we mix different combinators together the resulting combinatorial explosion is even greater.
+
+So the general design that you will find in a functional module is as follows:
+
+* a group of simple "primitives"
+* a group of combinators to combine said primitives in more complex structures
 
