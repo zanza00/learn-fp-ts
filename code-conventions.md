@@ -4,7 +4,7 @@
 This guide is written with fp-ts v2 in mind. To understand if a snippet found in the wild is v1 or v2 refer to[ this migration guide.](https://gcanti.github.io/fp-ts/introduction/upgrade-to-v2.html) 
 {% endhint %}
 
-fp-ts uses an approach ef exporting every single function from the module, because of name collision is better to import all the module and use an alias
+fp-ts uses an approach ef exporting every single function from the module, to avoid name collision is better to import all the module and use an alias
 
 For example this is an error
 
