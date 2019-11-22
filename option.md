@@ -4,6 +4,10 @@ description: Maybe there is a value
 
 # Option
 
+{% hint style="info" %}
+You can find the complete example [here](https://codesandbox.io/s/option-intro-01wo3?module=%2Fsrc%2Fexample.ts) in the file _example.ts_
+{% endhint %}
+
 `Option` represent a value that _maybe_ is present. Is roughly equivalent to `const a: T | undefined`
 
 for example accessing the first element of an array can be `undefined`
@@ -32,9 +36,19 @@ import * as A from "fp-ts/lib/Array";
 const safeFirstElement: O.Option<number> = A.head(arr)
 ```
 
-## Map
+For fun let's implement the function ourself, in input we pass the array and then we return an option. How we can return an Option? By returning `some` if the value is present, otherwise `none` . Knowing this we can say that `type Option<A> = Some<A> | None` .
 
-now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the TypeClass named `map` 
+```typescript
+import * as O from "fp-ts/lib/Option";
+
+function safeHead<A>(arr: A): O.Option<A> {
+    return arr.length > 0 ? O.some(arr[0]) : O.none;
+}
+```
+
+##  Map
+
+Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the TypeClass named `map` 
 
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
@@ -60,7 +74,7 @@ Moving on let's say that we need to divide this resulting number by 0. Because i
 const firstElementTimesTwo = pipe(
   safeFirstElement,
   O.map(value => value * 2),
-  O.chain(n === 0 ? O.none : O.some(1 / n))
+  O.chain(n => (n === 0 ? O.none : O.some(1 / n)))
 )
 ```
 
@@ -75,7 +89,7 @@ function ComputeWithFpts(array: number[]): string  {
   return pipe(
     A.head(array),
     O.map(n => n * 2),
-    O.chain(n === 0 ? O.none : O.some(1 / n)),
+    O.chain(n => (n === 0 ? O.none : O.some(1 / n))),
     O.filter(n => n > 1),
     O.fold(() => 'ko', () => `the result is: ${result}`)
   )
