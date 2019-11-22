@@ -47,7 +47,7 @@ import * as Option from "fp-ts/lib/Option"
 pipe(
   Option.some(1),
   Option.map(n => n * 2),
-  Option.chain(n === 0 ? O.none : O.some(1 / n)),
+  Option.chain(n => (n === 0 ? O.none : O.some(1 / n))),
   Option.filter(n => n > 1),
   Option.fold(() => 'ko', () => 'ok')
 )
@@ -65,7 +65,7 @@ declare function f(e: E.Either<string,string>): O.Option<string>
 pipe(
   O.some(1),
   O.map(n => n * 2),
-  O.chain(n === 0 ? O.none : O.some(1 / n)),
+  O.chain(n => (n === 0 ? O.none : O.some(1 / n))),
   O.filter(n => n > 1),
   O.fold(() => 'ko', () => 'ok')
 )
