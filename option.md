@@ -74,7 +74,7 @@ There are a lot of functions that are already implemented for common operation, 
 
 ##  Map
 
-Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the TypeClass named `map` 
+Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the function named `map` 
 
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
@@ -106,7 +106,13 @@ const firstElementTimesTwo = pipe(
 )
 ```
 
-Why we can't use `map`? The reason is that in this case the function may 
+Why we can't use `map`? The reason is that in this case the function may fail so we return an `Option`, with map we would be with `Option<Option<A>>` and that's not good, _chain_ is a function that "flattens" the result
+
+{% hint style="info" %}
+`chain` and `flatMap` are two functions that can be _derived from one another_ and are not the same function with different names. More info can be found [here](https://dev.to/gcanti/getting-started-with-fp-ts-monad-6k)
+{% endhint %}
+
+
 
 ## Final Example
 
