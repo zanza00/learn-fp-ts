@@ -36,7 +36,13 @@ import * as A from "fp-ts/lib/Array";
 const safeFirstElement: O.Option<number> = A.head(arr)
 ```
 
+For fun let's create the same function. An easy way to implement is to check for the array length and return the result based on that.
+
+At the start of this chapter I said that `Option` is roughly equivalent to `const a: T | undefined` ? This because `Option` is represented by `O.some<A> | O.none` 
+
 For fun let's implement the function ourself, in input we pass the array and then we return an option. How we can return an Option? By returning `some` if the value is present, otherwise `none` . Knowing this we can say that `type Option<A> = Some<A> | None` .
+
+With `O.some(1)` the `Option` is created with said value, this is a function because the value can change. 
 
 ```typescript
 import * as O from "fp-ts/lib/Option";
@@ -45,6 +51,26 @@ function safeHead<A>(arr: A): O.Option<A> {
     return arr.length > 0 ? O.some(arr[0]) : O.none;
 }
 ```
+
+With `O.none` the `Option` is created without the value so only a constant is needed.
+
+{% hint style="info" %}
+if you log `O.some(1)` you will get `{"_tag":"Some","value":1}` while `O.none` correspond to `{"_tag":"None"}` _None_ can possibly be only that object hence the constant.
+
+This is the internal representation of the Data Types.
+{% endhint %}
+
+With this information in mind we can write our function for `safeHead`
+
+```typescript
+function safeHead<T>(arr: T[]): O.Option<T> {
+  return arr.length === 0 ? : O.none : O.some(arr[0]);
+}
+```
+
+As you can see [this ](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#L395)is how it's implemented inside _fp-ts_
+
+There are a lot of functions that are already implemented for common operation, one goal of this book is to help discover said operations.
 
 ##  Map
 
@@ -64,6 +90,8 @@ const firstElementTimesTwo = pipe(
 )
 ```
 
+Note that with `map` the function is applied only if the value is present.
+
 For now the difference is not that great, the biggest one is the use of `const` instead of `let`.
 
 ## Chain
@@ -77,6 +105,8 @@ const firstElementTimesTwo = pipe(
   O.chain(n => (n === 0 ? O.none : O.some(1 / n)))
 )
 ```
+
+Why we can't use `map`? The reason is that in this case the function may 
 
 ## Final Example
 

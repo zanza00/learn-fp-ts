@@ -8,7 +8,7 @@ There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction
 Once you are familiar with [Either ](either/)I recommend to look[ io-ts ](https://github.com/gcanti/io-ts)that bridges the gap between compile and runtime
 {% endhint %}
 
-_fp-ts_ implement notions and concepts from functional programming. The two pillars that essential to understand how to use are as follows:
+_fp-ts_ implement notions and concepts from functional programming. The two pillars that are essential to understand how to use are as follows:
 
 * **Referential transparency**
 * **Composition**\(as a design pattern\)
@@ -33,7 +33,7 @@ What is mean to be _pure_? A function is pure when it **doesn't** **have side ef
 
 A _side effect_ is a change outside the function, the most common way is to update an _external_ variable. Another one is a function that may _throw_ an error.
 
-Think whether replace that function with it's value will update the external variable or throw the exception
+Think whether replace that function with its value will update the external variable or throw the exception
 
 Let's analyze the case of the external variable
 
@@ -121,7 +121,7 @@ try {
 
 #### All parameters are in input
 
-This is in a similar vein as before, a function need to be able to work without external values. For example lets assume that we have a global variable and a function that depends on said global variable
+This is in a similar vein as before, a function need to be able to work without external values. For example let's assume that we have a global variable and a function that depends on said global variable
 
 ```typescript
 const universe = {
