@@ -4,8 +4,10 @@ description: Maybe there is a value
 
 # Option
 
-{% hint style="info" %}
-You can find the complete example [here](https://codesandbox.io/s/option-intro-01wo3?module=%2Fsrc%2Fexample.ts) in the file _example.ts_
+{% hint style="warning" %}
+You can find the complete example [here](https://codesandbox.io/s/option-intro-01wo3) in the files _intro.ts_ and _example.ts_
+
+It's recommended that you read this page before head there
 {% endhint %}
 
 `Option` represent a value that _maybe_ is present. Is roughly equivalent to `const a: T | undefined`
@@ -74,10 +76,6 @@ As you can see [this ](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#
 
 There are a lot of functions that are already implemented for common operation, one goal of this book is to help discover said operations.
 
-{% hint style="info" %}
-The following operations are all easy examples to better understand the concepts
-{% endhint %}
-
 ##  Map
 
 Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the function named `map` 
@@ -141,6 +139,8 @@ const firstElementTimesTwoDividedByZeroGreaterThanOneWithChain = pipe(
 
 ## Final Example
 
+You noticed that I used constants to better illustrate the various operation in isolation, usually fp-ts is used in a single pipe to better understands the various operations.
+
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
 import * as O from "fp-ts/lib/Option";
@@ -176,7 +176,7 @@ function ComputeTheOldWay(array: number[]): string {
 console.log(ComputeTheOldWay([1])
 ```
 
-
-
-
+{% hint style="success" %}
+Now you have all the knowledge to understand the code in [sandbox ](https://codesandbox.io/s/option-intro-01wo3?module=%2Fsrc%2Fexample.ts)
+{% endhint %}
 
