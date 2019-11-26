@@ -36,6 +36,8 @@ import * as A from "fp-ts/lib/Array";
 const safeFirstElement: O.Option<number> = A.head(arr)
 ```
 
+## What is Option
+
 For fun let's create the same function. An easy way to implement is to check for the array length and return the result based on that.
 
 At the start of this chapter I said that `Option` is roughly equivalent to `const a: T | undefined` ? This because `Option` is represented by `O.some<A> | O.none` 
@@ -72,6 +74,10 @@ As you can see [this ](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#
 
 There are a lot of functions that are already implemented for common operation, one goal of this book is to help discover said operations.
 
+{% hint style="info" %}
+The following operations are all easy examples to better understand the concepts
+{% endhint %}
+
 ##  Map
 
 Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the function named `map` 
@@ -99,20 +105,39 @@ For now the difference is not that great, the biggest one is the use of `const` 
 Moving on let's say that we need to divide this resulting number by 0. Because is an operation with a special case we use another Type Class called `chain` that enables us to change the "branch" of the `Option` 
 
 ```typescript
-const firstElementTimesTwo = pipe(
-  safeFirstElement,
-  O.map(value => value * 2),
+const firstElementTimesTwoDividedByZero = pipe(
+  firstElementTimesTwo,
   O.chain(n => (n === 0 ? O.none : O.some(1 / n)))
 )
 ```
 
-Why we can't use `map`? The reason is that in this case the function may fail so we return an `Option`, with map we would be with `Option<Option<A>>` and that's not good, _chain_ is a function that "flattens" the result
+Why we can't use `map`? The reason is that in this case the function may fail so we return an `Option`, with map we would be with `Option<Option<A>>` and that's not good, _chain_ is a function that "flattens" the result.
 
 {% hint style="info" %}
 `chain` and `flatMap` are two functions that can be _derived from one another_ and are not the same function with different names. More info can be found [here](https://dev.to/gcanti/getting-started-with-fp-ts-monad-6k)
 {% endhint %}
 
+## Filter
 
+Now let's say that the result needs to be greater than one. We can use `filter`
+
+This function accepts a predicate, based on the result of the predicate "keeps" the value of the `Option` or "discards" it in the `None`
+
+```typescript
+const firstElementTimesTwoDividedByZeroGreaterThanOne = pipe(
+  firstElementTimesTwoDividedByZero,
+  O.filter(n => n > 1)
+);
+```
+
+You can obtain the same result using chain 
+
+```typescript
+const firstElementTimesTwoDividedByZeroGreaterThanOneWithChain = pipe(
+  firstElementTimesTwoDividedByZero,
+  O.chain(n => (n > 1 ? O.some(n) : O.none))
+)
+```
 
 ## Final Example
 
