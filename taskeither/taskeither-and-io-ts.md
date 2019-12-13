@@ -57,9 +57,10 @@ function decodeError(e: t.Errors): Error {
 }
 
 function decode(res: unknown): TE.TaskEither<Error, Film> {
-  pipe(
+  return pipe(
     TE.fromEither(Film.decode(res)),
     TE.mapLeft(decodeError)
+  )
 }
 ```
 
