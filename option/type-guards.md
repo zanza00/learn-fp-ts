@@ -1,6 +1,6 @@
 # Type guards
 
-`fp-ts` has a neat way to deal with type guards , using [Option\#getRefinements](https://gcanti.github.io/fp-ts/modules/Option.ts.html#getrefinement-function)
+`fp-ts` has a neat way to deal with type guards, using [Option\#getRefinements](https://gcanti.github.io/fp-ts/modules/Option.ts.html#getrefinement-function)
 
 The problem stem from typescript type safety
 
