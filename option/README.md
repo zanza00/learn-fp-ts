@@ -5,7 +5,7 @@ description: Maybe there is a value
 # Option
 
 {% hint style="warning" %}
-You can find the complete example [here](https://codesandbox.io/s/option-intro-01wo3) in the files _intro.ts_ and _example.ts_
+You can find the complete example [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/option-intro?module=%2Fsrc%2Fintro.ts) in the files _intro.ts_ and _example.ts_
 
 It's recommended that you read this page before head there
 {% endhint %}
@@ -177,6 +177,6 @@ console.log(ComputeTheOldWay([1])
 ```
 
 {% hint style="success" %}
-Now you have all the knowledge to understand the code in [sandbox ](https://codesandbox.io/s/option-intro-01wo3?module=%2Fsrc%2Fexample.ts)
+Now you have all the knowledge to understand the code in [sandbox ](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/option-intro?module=%2Fsrc%2Fintro.ts)
 {% endhint %}
 
