@@ -3,7 +3,7 @@
 In this page we will learn how to fetch data from an endpoint and validate \(check\) that the data returned is what we expect. To do this we will use the io-ts library that uses an `Either` for representing the or the correct value or the errors in the validation
 
 {% hint style="info" %}
-You can find a more complete implementation [here ](https://codesandbox.io/s/taskeither-io-ts-8rltm?module=%2Fsrc%2Fexample.ts)in the file example.ts
+You can find a more complete implementation [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/taskeither/with-io-ts?module=%2Fsrc%2Fexample.ts)in the file example.ts
 {% endhint %}
 
 in this case the program is made up by two operations, `fetch` the data and `validate` returned data. Let's start by focusing on the fetch
