@@ -29,7 +29,7 @@ function getStuff(u: string): TE.TaskEither<Error, unknown> {
 
 First of all since a `Promise` is not referentially transparent we use `tryCatch` to make it, if you already have a fetch wrapped in an utility you can use that instead.
 
-Now lets implement a [io-ts](https://github.com/gcanti/io-ts) codec for a [Studio Ghibli Film ](https://ghibliapi.herokuapp.com/#tag/Films)
+Now lets implement a [io-ts](https://github.com/gcanti/io-ts) codec for a [Studio Ghibli Film](https://ghibliapi.herokuapp.com/#tag/Films)
 
 ```typescript
 import * as t from "io-ts";
@@ -57,10 +57,7 @@ function decodeError(e: t.Errors): Error {
 }
 
 function decode(res: unknown): TE.TaskEither<Error, Film> {
-  return pipe(
-    TE.fromEither(Film.decode(res)),
-    TE.mapLeft(decodeError)
-  )
+  return pipe(TE.fromEither(Film.decode(res)), TE.mapLeft(decodeError));
 }
 ```
 
@@ -100,8 +97,7 @@ const TaskEitherAndValidate = pipe(
 );
 
 TaskEitherAndValidate().then(msg => {
-  console.log(msg)
+  console.log(msg);
   // "Film recovered succesfully, title is: My Neighbor Totoro"
-})
+});
 ```
-

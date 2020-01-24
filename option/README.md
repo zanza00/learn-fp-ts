@@ -15,9 +15,9 @@ It's recommended that you read this page before head there
 for example accessing the first element of an array can be `undefined`
 
 ```typescript
-const arr: number[] = []
+const arr: number[] = [];
 
-const firstElement = arr[0] // undefined
+const firstElement = arr[0]; // undefined
 ```
 
 before manipulating `firstElement` checking for `undefined` is needed
@@ -25,7 +25,7 @@ before manipulating `firstElement` checking for `undefined` is needed
 ```typescript
 let firstElementTimesTwo;
 if (firstElement !== undefined) {
-    firstElementTimesTwo = firstElement * 2
+  firstElementTimesTwo = firstElement * 2;
 }
 ```
 
@@ -35,24 +35,24 @@ luckily we can use one of the function form `Array` to do the same thing
 import * as O from "fp-ts/lib/Option";
 import * as A from "fp-ts/lib/Array";
 
-const safeFirstElement: O.Option<number> = A.head(arr)
+const safeFirstElement: O.Option<number> = A.head(arr);
 ```
 
 ## What is Option
 
 For fun let's create the same function. An easy way to implement is to check for the array length and return the result based on that.
 
-At the start of this chapter I said that `Option` is roughly equivalent to `const a: T | undefined` ? This because `Option` is represented by `O.some<A> | O.none` 
+At the start of this chapter I said that `Option` is roughly equivalent to `const a: T | undefined` ? This because `Option` is represented by `O.some<A> | O.none`
 
 For fun let's implement the function ourself, in input we pass the array and then we return an option. How we can return an Option? By returning `some` if the value is present, otherwise `none` . Knowing this we can say that `type Option<A> = Some<A> | None` .
 
-With `O.some(1)` the `Option` is created with said value, this is a function because the value can change. 
+With `O.some(1)` the `Option` is created with said value, this is a function because the value can change.
 
 ```typescript
 import * as O from "fp-ts/lib/Option";
 
 function safeHead<A>(arr: A): O.Option<A> {
-    return arr.length > 0 ? O.some(arr[0]) : O.none;
+  return arr.length > 0 ? O.some(arr[0]) : O.none;
 }
 ```
 
@@ -72,26 +72,26 @@ function safeHead<T>(arr: T[]): O.Option<T> {
 }
 ```
 
-As you can see [this ](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#L395)is how it's implemented inside _fp-ts_
+As you can see [this](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#L395)is how it's implemented inside _fp-ts_
 
 There are a lot of functions that are already implemented for common operation, one goal of this book is to help discover said operations.
 
-##  Map
+## Map
 
-Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the function named `map` 
+Now we have an `Option<number>` which means that _maybe_ there is a value _maybe_ not. How can we manipulate the value? By using the function named `map`
 
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
 import * as O from "fp-ts/lib/Option";
 import * as A from "fp-ts/lib/Array";
 
-const arr: number[] = []
-const safeFirstElement: O.Option<number> = A.head(arr)
+const arr: number[] = [];
+const safeFirstElement: O.Option<number> = A.head(arr);
 
 const firstElementTimesTwo = pipe(
   safeFirstElement,
   O.map(value => value * 2)
-)
+);
 ```
 
 Note that with `map` the function is applied only if the value is present.
@@ -100,13 +100,13 @@ For now the difference is not that great, the biggest one is the use of `const` 
 
 ## Chain
 
-Moving on let's say that we need to divide this resulting number by 0. Because is an operation with a special case we use another Type Class called `chain` that enables us to change the "branch" of the `Option` 
+Moving on let's say that we need to divide this resulting number by 0. Because is an operation with a special case we use another Type Class called `chain` that enables us to change the "branch" of the `Option`
 
 ```typescript
 const firstElementTimesTwoDividedByZero = pipe(
   firstElementTimesTwo,
   O.chain(n => (n === 0 ? O.none : O.some(1 / n)))
-)
+);
 ```
 
 Why we can't use `map`? The reason is that in this case the function may fail so we return an `Option`, with map we would be with `Option<Option<A>>` and that's not good, _chain_ is a function that "flattens" the result.
@@ -128,13 +128,13 @@ const firstElementTimesTwoDividedByZeroGreaterThanOne = pipe(
 );
 ```
 
-You can obtain the same result using chain 
+You can obtain the same result using chain
 
 ```typescript
 const firstElementTimesTwoDividedByZeroGreaterThanOneWithChain = pipe(
   firstElementTimesTwoDividedByZero,
   O.chain(n => (n > 1 ? O.some(n) : O.none))
-)
+);
 ```
 
 ## Final Example
@@ -146,17 +146,20 @@ import { pipe } from "fp-ts/lib/pipeable";
 import * as O from "fp-ts/lib/Option";
 import * as A from "fp-ts/lib/Array";
 
-function ComputeWithFpts(array: number[]): string  {
+function ComputeWithFpts(array: number[]): string {
   return pipe(
     A.head(array),
     O.map(n => n * 2),
     O.chain(n => (n === 0 ? O.none : O.some(1 / n))),
     O.filter(n => n > 1),
-    O.fold(() => 'ko', () => `the result is: ${result}`)
-  )
+    O.fold(
+      () => "ko",
+      () => `the result is: ${result}`
+    )
+  );
 }
 
-console.log(ComputeWithFpts([1]))
+console.log(ComputeWithFpts([1]));
 ```
 
 for comparison here is the same example without using fp-ts
