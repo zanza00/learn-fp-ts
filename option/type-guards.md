@@ -18,7 +18,7 @@ type RedBox = {
 type Box = BlueBox | RedBox;
 
 //typo but typescript doesn't complain
-const isRedBox = (box: C): box is RedBox => box.t === "Blue";
+const isRedBox = (box: Box): box is RedBox => box.t === "Blue";
 ```
 
 {% hint style="info" %}
@@ -30,7 +30,9 @@ To fix this we can use `getRefinement`
 ```typescript
 import * as O from "fp-ts/lib/Option";
 import * as A from "fp-ts/lib/Array";
+
 type Box = BlueBox | RedBox;
+
 type BlueBox = {
   t: "Blue";
   value: string;
@@ -39,13 +41,17 @@ type RedBox = {
   t: "Red";
   v: number;
 };
+
 // this are typesafe
 const parseBlueBox = (box: Box): O.Option<BlueBox> =>
   box.t === "Blue" ? O.some(box) : O.none;
 const parseRedBox = (box: Box): O.Option<RedBox> =>
   box.t === "Red" ? O.some(box) : O.none;
+
 const isBlueBox = O.getRefinement(parseBlueBox);
 const isRedBox = O.getRefinement(parseRedBox);
+
 declare const boxes: Array<Box>;
+
 const onlyBlueBoxes = A.array.filterMap(boxes, parseBlueBox);
 ```
