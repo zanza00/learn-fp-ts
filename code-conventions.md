@@ -47,7 +47,7 @@ import * as Option from "fp-ts/lib/Option"
 pipe(
   Option.some(1),
   Option.map(n => n * 2),
-  Option.chain(n => (n === 0 ? O.none : O.some(1 / n))),
+  Option.chain(n => (n === 0 ? Option.none : Option.some(1 / n))),
   Option.filter(n => n > 1),
   Option.fold(() => 'ko', () => 'ok')
 )
