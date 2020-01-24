@@ -5,14 +5,12 @@ description: Maybe there is a value
 # Option
 
 {% hint style="warning" %}
-You can find the complete example [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/option/intro?module=%2Fsrc%2Fintro.ts) in the files _intro.ts_ and _example.ts_
-
-It's recommended that you read this page before head there
+The code for this examples
 {% endhint %}
 
-`Option` represent a value that _maybe_ is present. Is roughly equivalent to `const a: T | undefined`
+`Option` represents a value that _maybe_ is present. Is roughly equivalent to `const a: T | undefined`
 
-for example accessing the first element of an array can be `undefined`
+for example, accessing the first element of an array can be `undefined`
 
 ```typescript
 const arr: number[] = [];
@@ -42,9 +40,9 @@ const safeFirstElement: O.Option<number> = A.head(arr);
 
 For fun let's create the same function. An easy way to implement is to check for the array length and return the result based on that.
 
-At the start of this chapter I said that `Option` is roughly equivalent to `const a: T | undefined` ? This because `Option` is represented by `O.some<A> | O.none`
+At the start of this chapter, I said that `Option` is roughly equivalent to `const a: T | undefined`? This because `Option` is represented by `O.some<A> | O.none`
 
-For fun let's implement the function ourself, in input we pass the array and then we return an option. How we can return an Option? By returning `some` if the value is present, otherwise `none` . Knowing this we can say that `type Option<A> = Some<A> | None` .
+For fun let's implement the function ourselves, in input, we pass the array and then we return an option. How we can return an Option? By returning `some` if the value is present, otherwise `none`. Knowing this we can say that `type Option<A> = Some<A> | None` .
 
 With `O.some(1)` the `Option` is created with said value, this is a function because the value can change.
 
@@ -64,7 +62,7 @@ if you log `O.some(1)` you will get `{"_tag":"Some","value":1}` while `O.none` c
 This is the internal representation of the Data Types.
 {% endhint %}
 
-With this information in mind we can write our function for `safeHead`
+With this information in mind, we can write our function for `safeHead`
 
 ```typescript
 function safeHead<T>(arr: T[]): O.Option<T> {
@@ -96,7 +94,7 @@ const firstElementTimesTwo = pipe(
 
 Note that with `map` the function is applied only if the value is present.
 
-For now the difference is not that great, the biggest one is the use of `const` instead of `let`.
+For now, the difference is not that great, the biggest one is the use of `const` instead of `let`.
 
 ## Chain
 
@@ -109,7 +107,7 @@ const firstElementTimesTwoDividedByZero = pipe(
 );
 ```
 
-Why we can't use `map`? The reason is that in this case the function may fail so we return an `Option`, with map we would be with `Option<Option<A>>` and that's not good, _chain_ is a function that "flattens" the result.
+Why we can't use `map`? The reason is that in this case, the function may fail so we return an `Option`, with map we would be with `Option<Option<A>>` and that's not good, _chain_ is a function that "flattens" the result.
 
 {% hint style="info" %}
 `chain` and `flatMap` are two functions that can be _derived from one another_ and are not the same function with different names. More info can be found [here](https://dev.to/gcanti/getting-started-with-fp-ts-monad-6k)
@@ -139,7 +137,7 @@ const firstElementTimesTwoDividedByZeroGreaterThanOneWithChain = pipe(
 
 ## Final Example
 
-You noticed that I used constants to better illustrate the various operation in isolation, usually fp-ts is used in a single pipe to better understands the various operations.
+You noticed that I used constants to better illustrate the various operation in isolation. Usually, fp-ts is used in a single pipe to better understand the various operations.
 
 ```typescript
 import { pipe } from "fp-ts/lib/pipeable";
@@ -162,7 +160,7 @@ function ComputeWithFpts(array: number[]): string {
 console.log(ComputeWithFpts([1]));
 ```
 
-for comparison here is the same example without using fp-ts
+for comparison here is the corresponding example without using fp-ts
 
 ```typescript
 function ComputeTheOldWay(array: number[]): string {
@@ -180,5 +178,5 @@ console.log(ComputeTheOldWay([1])
 ```
 
 {% hint style="success" %}
-Now you have all the knowledge to understand the code in [sandbox](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/option/intro?module=%2Fsrc%2Fintro.ts)
+All the code that appears in this page you can find it [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/option/intro?module=%2Fsrc%2Fintro.ts)
 {% endhint %}
