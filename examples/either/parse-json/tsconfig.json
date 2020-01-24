@@ -1,0 +1,13 @@
+{
+    "include": [
+        "./src/*"
+    ],
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "es2018"
+        ],
+        "jsx": "react",
+        "strict": true
+    }
+}
