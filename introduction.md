@@ -2,38 +2,38 @@
 
 [fp-ts](https://github.com/gcanti/fp-ts) is a library that enables to use functional programming in typescript.
 
-There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolve around it. Once you can use _fp-ts_ you can use those as well.
+There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolves around it. Once you can use _fp-ts_ you can use those as well.
 
 {% hint style="info" %}
-Once you are familiar with [Either ](either/)I recommend to look[ io-ts ](https://github.com/gcanti/io-ts)that bridges the gap between compile and runtime
+Once you are familiar with [Either ](either/)I recommend using[ io-ts ](https://github.com/gcanti/io-ts)which bridges the gap between compile and runtime
 {% endhint %}
 
-_fp-ts_ implement notions and concepts from functional programming. The two pillars that are essential to understand how to use are as follows:
+_fp-ts_ implements notions and concepts from functional programming. The two pillars that are essential to understand how to use it are the following:
 
 * **Referential transparency**
-* **Composition**\(as a design pattern\)
+* **Composition** \(as a design pattern\)
 
 Let's talk more in depth on what those two pillars are
 
 ## Referential Transparency
 
-This is a very simple but very powerful concept. It states as follows: _Everything is an Expression._ When something is an Expression you can safely replace it with its corresponding value without changing the _Program_'s behavior.
+This is a very simple but powerful concept. It states as follows: _Everything is an Expression._ When something is an Expression you can safely replace it with its corresponding value without changing the _Program_'s behavior.
 
 {% hint style="info" %}
 This concept is very powerful when refactoring.
 {% endhint %}
 
-To achieve this effect some rules has to be enforced.
+To achieve this effect some rules have to be enforced.
 
 ### Functions need to be pure
 
-What is mean to be _pure_? A function is pure when it **doesn't** **have side effects,** **takes in** **input all parameters** that are needed and **returns a value**. Let's analyze what this means.
+What does "to be _pure" mean_? A function is pure when it **doesn't** **have side effects,** **takes in** **input all parameters** that are needed and **returns a value**. Let's analyze what this means.
 
 #### Doesn't have side effects
 
 A _side effect_ is a change outside the function, the most common way is to update an _external_ variable. Another one is a function that may _throw_ an error.
 
-Think whether replace that function with its value will update the external variable or throw the exception
+Think whether replaceing that function with its value will update the external variable or throw the exception
 
 Let's analyze the case of the external variable
 
@@ -121,7 +121,7 @@ try {
 
 #### All parameters are in input
 
-This is in a similar vein as before, a function need to be able to work without external values. For example let's assume that we have a global variable and a function that depends on said global variable
+This is in a similar vein as before, a function needs to be able to work without external values. For example let's assume that we have a global variable and a function that depends on said global variable
 
 ```typescript
 const universe = {
@@ -171,13 +171,13 @@ This aids readability and testability of the function
 
 #### Returns a value
 
-This particular point is not so obvious, usually if something has a `void` return it usually mean that some side effect is performed. It's in the same vein as before, portability and testability.
+This particular point is not so obvious, usually if something has a `void` return it usually means that some side effect is performed. It's in the same vein as before, portability and testability.
 
 To perform side effect take a look at IO
 
 ## Composition
 
-Composition is a pattern that enables the construction of bigger and complex entities by combine small and easy to understand unit that do something very specific.
+Composition is a pattern that enables the construction of bigger and complex entities by combining  smaller and easier to understand units that do something very specific.
 
 ### Combinators
 
@@ -191,13 +191,13 @@ The general form of a combinator is:
 combinator: Thing => Thing
 ```
 
-The purpose of a combinator is to create new "things" from "things" that are already defined
+The purpose of a combinator is to create new "things" from "things" that are already defined.
 
-The result can be passed as an input we get an explosion of combinatorial possibilities, this is the power of this pattern.
+The result can be passed as an input and we get an explosion of combinatorial possibilities, this is the power of this pattern.
 
 If we mix different combinators together the resulting combinatorial explosion is even greater.
 
-So the general design that you will find in a functional module is as follows:
+So the general design that you will find in a functional module is achieved by using the following points:
 
 * a group of simple "primitives"
 * a group of combinators to combine said primitives in more complex structures
