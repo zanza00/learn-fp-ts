@@ -4,10 +4,6 @@ description: Maybe there is a value
 
 # Option
 
-{% hint style="warning" %}
-The code for this examples
-{% endhint %}
-
 `Option` represents a value that _maybe_ is present. Is roughly equivalent to `const a: T | undefined`
 
 for example, accessing the first element of an array can be `undefined`
