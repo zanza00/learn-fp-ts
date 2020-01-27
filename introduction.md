@@ -4,14 +4,10 @@
 
 There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolves around it. Once you can use _fp-ts_ you can use those as well.
 
-{% hint style="info" %}
-Once you are familiar with [Either ](either/)I recommend using[ io-ts ](https://github.com/gcanti/io-ts)which bridges the gap between compile and runtime
-{% endhint %}
-
 _fp-ts_ implements notions and concepts from functional programming. The two pillars that are essential to understand how to use it are the following:
 
-* **Referential transparency**
-* **Composition** \(as a design pattern\)
+- **Referential transparency**
+- **Composition** \(as a design pattern\)
 
 Let's talk more in depth on what those two pillars are
 
@@ -38,68 +34,68 @@ Think whether replaceing that function with its value will update the external v
 Let's analyze the case of the external variable
 
 ```typescript
-let externalVariable = 0
+let externalVariable = 0;
 
 function sum(a: number): void {
-    externalVariable = externalVariable + a;
+  externalVariable = externalVariable + a;
 }
 
-sum(42)
+sum(42);
 
-console.log(externalVariable) // 42
+console.log(externalVariable); // 42
 ```
 
 now we perform the substitution and see what happens
 
 ```typescript
-let externalVariable = 0
+let externalVariable = 0;
 
 function sum(a: number): void {
-    externalVariable = externalVariable + a;
+  externalVariable = externalVariable + a;
 }
 
-42 // here we replace it's result 
+42; // here we replace it's result
 
-console.log(externalVariable) // 0
+console.log(externalVariable); // 0
 ```
 
 as you can see the result is changed, what can we do to rectify this?
 
 ```typescript
 function sum(a: number, b: number): number {
-    return a + b;
+  return a + b;
 }
 
-const result = sum(21, 21)
+const result = sum(21, 21);
 
-console.log(result) // 42
+console.log(result); // 42
 ```
 
 now if we replace the function sum with its result the program doesn't change.
 
 ```typescript
 function sum(a: number, b: number): number {
-    return a + b;
+  return a + b;
 }
 
-const result = 42
+const result = 42;
 
-console.log(result) // 42, same as before
+console.log(result); // 42, same as before
 ```
 
 if the function throws an error the concept is similar
 
 ```typescript
 function divide(a: number, b: number): number {
-    if (b == 0) throw 'cannot divide by zero'
-    return a/b
+  if (b == 0) throw "cannot divide by zero";
+  return a / b;
 }
 
 try {
-    const result = divide(150, 0)
-    console.log(result)
+  const result = divide(150, 0);
+  console.log(result);
 } catch (e) {
-    console.log(e) // 'cannot divide by zero'
+  console.log(e); // 'cannot divide by zero'
 }
 ```
 
@@ -107,15 +103,15 @@ Now the program behavior changes when we replace the function with its result
 
 ```typescript
 function divide(a: number, b: number): number {
-    if (b == 0) throw 'cannot divide by zero'
-    return a/b
+  if (b == 0) throw "cannot divide by zero";
+  return a / b;
 }
 
 try {
-    const result = Infinity
-    console.log(result) // Infinity
+  const result = Infinity;
+  console.log(result); // Infinity
 } catch (e) {
-    console.log(e)
+  console.log(e);
 }
 ```
 
@@ -125,35 +121,39 @@ This is in a similar vein as before, a function needs to be able to work without
 
 ```typescript
 const universe = {
-    name: 'functional programming'
-}
+  name: "functional programming"
+};
 
 function getFirstLetter(): string {
-    return universe.name.substring(0, 1)
+  return universe.name.substring(0, 1);
 }
 
-console.log(getFirstLetter()) // 'f'
+console.log(getFirstLetter()); // 'f'
 ```
 
 Now if we move the function in a new file it doesn't work anymore
 
 {% tabs %}
 {% tab title="function" %}
+
 ```typescript
 function getFirstLetter(): string {
-    return universe.name.substring(0, 1)
+  return universe.name.substring(0, 1);
 }
 
-console.log(getFirstLetter()) // cannot compile
+console.log(getFirstLetter()); // cannot compile
 ```
+
 {% endtab %}
 
 {% tab title="universe" %}
-```
+
+```typescript
 const universe = {
     name: 'functional programming'
 }
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -161,10 +161,10 @@ to make this function pure we need to make the dependency explicit
 
 ```typescript
 function getFirstLetter(str: string): string {
-    return universe.name.substring(0, 1)
+  return universe.name.substring(0, 1);
 }
 
-console.log(getFirstLetter('functional programming')); // 'f'
+console.log(getFirstLetter("functional programming")); // 'f'
 ```
 
 This aids readability and testability of the function
@@ -177,7 +177,7 @@ To perform side effect take a look at IO
 
 ## Composition
 
-Composition is a pattern that enables the construction of bigger and complex entities by combining  smaller and easier to understand units that do something very specific.
+Composition is a pattern that enables the construction of bigger and complex entities by combining smaller and easier to understand units that do something very specific.
 
 ### Combinators
 
@@ -199,6 +199,5 @@ If we mix different combinators together the resulting combinatorial explosion i
 
 So the general design that you will find in a functional module is achieved by using the following points:
 
-* a group of simple "primitives"
-* a group of combinators to combine said primitives in more complex structures
-
+- a group of simple "primitives"
+- a group of combinators to combine said primitives in more complex structures
