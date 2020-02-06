@@ -95,3 +95,4 @@ import * as IO from "fp-ts/lib/IO";
 ```
 
 of course you can use what you find best, feel free to experiment.
+
