@@ -36,7 +36,7 @@ const safeFirstElement: O.Option<number> = A.head(arr);
 
 For fun let's create the same function. An easy way to implement is to check for the array length and return the result based on that.
 
-At the start of this chapter, I said that `Option` is roughly equivalent to `const a: T | undefined`? This because `Option` is represented by `O.some<A> | O.none`
+At the start of this chapter I said that `Option` is roughly equivalent to `const a: T | undefined` This because `Option` is represented by `O.some<A> | O.none`
 
 For fun let's implement the function ourselves, in input, we pass the array and then we return an option. How we can return an Option? By returning `some` if the value is present, otherwise `none`. Knowing this we can say that `type Option<A> = Some<A> | None` .
 
@@ -66,7 +66,7 @@ function safeHead<T>(arr: T[]): O.Option<T> {
 }
 ```
 
-As you can see [this](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#L395)is how it's implemented inside _fp-ts_
+As you can see [this](https://github.com/gcanti/fp-ts/blob/master/src/Array.ts#L395) is how it's implemented inside _fp-ts_
 
 There are a lot of functions that are already implemented for common operation, one goal of this book is to help discover said operations.
 
@@ -176,3 +176,4 @@ console.log(ComputeTheOldWay([1])
 {% hint style="success" %}
 All the code that appears in this page you can find it [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/option/intro?module=%2Fsrc%2Fintro.ts)
 {% endhint %}
+
