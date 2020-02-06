@@ -80,9 +80,20 @@ interface Employee {
 
 const employee1: Employee = { company: { address: { street: { name: 'high street' } } } }
 
+interface Employee {
+  company?: {
+    address?: {
+      street?: {
+        name?: string;
+      };
+    };
+  };
+}
+
+const employee1: Employee = { company: { address: { street: { name: 'high street' } } } }
+
 const street = pipe(
     fromNullable(employee1.company?.address?.street?.name),
   )
 )
 ```
-

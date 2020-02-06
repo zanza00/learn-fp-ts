@@ -1,5 +1,9 @@
 # ParseJson
 
+{% hint style="info" %}
+You can find the code for this example [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/either/parse-json?module=%2Fsrc%2Fexample.ts) in the example.ts file
+{% endhint %}
+
 I need to parse some JSON, since it's an operation that can fail we use `Either<E,A>`
 
 ```typescript
@@ -76,8 +80,3 @@ pipe(
 
 //[{"firstJson":true},{"thisIsTheSecondJson":"Yes it is"}]
 ```
-
-{% hint style="info" %}
-You can find the code for this example [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/either/parse-json?module=%2Fsrc%2Fexample.ts) in the example.ts file
-{% endhint %}
-

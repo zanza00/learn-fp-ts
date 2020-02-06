@@ -101,4 +101,3 @@ TaskEitherAndValidate().then(msg => {
 {% hint style="info" %}
 You can find a more complete implementation [here](https://codesandbox.io/s/github/zanza00/learn-fp-ts/tree/master/examples/taskeither/with-io-ts?module=%2Fsrc%2Fexample.ts)in the file example.ts
 {% endhint %}
-

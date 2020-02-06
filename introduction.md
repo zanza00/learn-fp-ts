@@ -6,8 +6,8 @@ There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction
 
 _fp-ts_ implements notions and concepts from functional programming. The two pillars that are essential to understand how to use it are the following:
 
-* **Referential transparency**
-* **Composition** \(as a design pattern\)
+- **Referential transparency**
+- **Composition** \(as a design pattern\)
 
 Let's talk more in depth on what those two pillars are
 
@@ -135,6 +135,7 @@ Now if we move the function in a new file it doesn't work anymore
 
 {% tabs %}
 {% tab title="function" %}
+
 ```typescript
 function getFirstLetter(): string {
   return universe.name.substring(0, 1);
@@ -142,14 +143,17 @@ function getFirstLetter(): string {
 
 console.log(getFirstLetter()); // cannot compile
 ```
+
 {% endtab %}
 
 {% tab title="universe" %}
+
 ```typescript
 const universe = {
     name: 'functional programming'
 }
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -195,6 +199,5 @@ If we mix different combinators together the resulting combinatorial explosion i
 
 So the general design that you will find in a functional module is achieved by using the following points:
 
-* a group of simple "primitives"
-* a group of combinators to combine said primitives in more complex structures
-
+- a group of simple "primitives"
+- a group of combinators to combine said primitives in more complex structures

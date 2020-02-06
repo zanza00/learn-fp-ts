@@ -6,7 +6,7 @@ description: it's Either pizza or ice-cream
 
 Either represent one value or the other. What this means is that the values are mutually exclusive, or you have a `Left<A>` or a `Right<B>`. Thus the representation of this data type is with two generics `Either<A, B>`. 
 
-It's useful to this that Option is a value that maybe is present, Either is a value that perhaps is present or some kind of error is present. This is usually used to represent the result of something that can fail, and because _Right is Right_ when we use \`map\` the function is applied to the Right, if you want to map the error we can use `mapLeft`.
+It's useful to this that Option is a value that maybe is present, Either is a value that perhaps is present or some kind of error is present. This is usually used to represent the result of something that can fail, and because _Right is Right_ when we use `map` the function is applied to the Right, if you want to map the error we can use `mapLeft`. In other words we can sai that Either is Right biased.
 
 Think the last time that you needed to use a \`Try catch\` block. If you need to convey the meaning of the failure, that's a good indicator of potential use for Either.
 
