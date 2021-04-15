@@ -42,7 +42,7 @@ Now we can improve it by dealing with the error using another utility called [to
 import * as E from 'fp-ts/lib/Either';
 
 function parseJson(str: string): E.Either<Error,unknown> {
-    return E.tryCatch(() => JSON.parse(str), e => toError(e))
+    return E.tryCatch(() => JSON.parse(str), e => E.toError(e))
 }
 ```
 
