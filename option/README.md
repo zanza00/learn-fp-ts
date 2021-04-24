@@ -148,7 +148,7 @@ function ComputeWithFpts(array: number[]): string {
     O.filter(n => n > 1),
     O.fold(
       () => "ko",
-      () => `the result is: ${result}`
+      (result) => `the result is: ${result}`
     )
   );
 }
