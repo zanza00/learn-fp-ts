@@ -56,7 +56,7 @@ type Req = { cookies?: string[] };
 
 const req1: Req = {};
 
-const cookie1: string[] | undefined = req1.cookies && req1.cookies;
+const cookie1: string[] | undefined = req1 && req1.cookies;
 const cookie2: O.Option<string[]> = pipe(
   O.fromNullable(req1),
   O.mapNullable(a => a.cookies)
