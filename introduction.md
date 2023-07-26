@@ -2,7 +2,7 @@
 
 [fp-ts](https://github.com/gcanti/fp-ts) is a library that enables to use functional programming in typescript.
 
-There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/introduction/ecosystem) that revolves around it. Once you can use _fp-ts_ you can use those as well.
+There is an [ecosystem of libraries](https://gcanti.github.io/fp-ts/ecosystem) that revolves around it. Once you can use _fp-ts_ you can use those as well.
 
 _fp-ts_ implements notions and concepts from functional programming. The two pillars that are essential to understand how to use it are the following:
 
